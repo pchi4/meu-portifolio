@@ -4,22 +4,23 @@ import { Sun, Moon } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState<boolean>(false);
+  const { theme, setTheme, resolvedTheme } = useTheme(); // resolvedTheme é mais preciso
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-  }, []); // Evita erro de hidratação
+  }, []);
 
-  if (!mounted) return null;
+  if (!mounted) return <div className="p-5" />; // Reserva o espaço do botão
 
   return (
     <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 rounded-full bg-slate-200 dark:bg-slate-800 hover:scale-110 transition-transform"
+      type="button"
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      className="p-2 rounded-full bg-slate-200 dark:bg-slate-800 hover:scale-110 transition-all active:scale-95"
+      aria-label="Toggle Theme"
     >
-      {theme === "dark" ? (
+      {resolvedTheme === "dark" ? (
         <Sun size={18} className="text-yellow-400" />
       ) : (
         <Moon size={18} className="text-blue-600" />
