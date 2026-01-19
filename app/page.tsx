@@ -165,12 +165,15 @@ export default function Portfolio() {
               <Code2 className="text-blue-500" /> Stack & Expertise
             </h2>
           </Reveal>
+
+          {/* Grid Principal do Bento */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Bloco 1: Mobile (Destaque) */}
             <div className="md:col-span-2 p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 shadow-sm">
               <h3 className="text-slate-500 mb-4 font-mono text-xs uppercase tracking-widest">
                 Mobile Development
               </h3>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-x-6 gap-y-2">
                 {profile.skills.mobile.map((skill) => (
                   <span key={skill} className="text-3xl md:text-4xl font-bold">
                     {skill}
@@ -178,7 +181,9 @@ export default function Portfolio() {
                 ))}
               </div>
             </div>
-            <div className="p-8 rounded-3xl bg-blue-600 text-white shadow-xl shadow-blue-500/20">
+
+            {/* Bloco 2: Mestrado (Destaque Lateral) */}
+            <div className="p-8 rounded-3xl bg-blue-600 text-white shadow-xl shadow-blue-500/20 flex flex-col justify-between">
               <h3 className="text-blue-100 mb-4 font-mono text-xs uppercase tracking-widest">
                 Mestrado UFBA
               </h3>
@@ -186,25 +191,73 @@ export default function Portfolio() {
                 {profile.education[1].research}
               </p>
             </div>
+
+            {/* Bloco 3: Frontend */}
             <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 shadow-sm">
-              <h3 className="text-slate-500 mb-2 font-mono text-xs uppercase tracking-widest">
+              <h3 className="text-slate-500 mb-3 font-mono text-xs uppercase tracking-widest">
                 Frontend
               </h3>
-              <p className="font-bold text-lg">
-                {profile.skills.frontend.slice(0, 3).join(", ")}
-              </p>
+              <div className="flex flex-wrap gap-2">
+                {profile.skills.frontend.map((s) => (
+                  <span
+                    key={s}
+                    className="text-sm font-bold px-2 py-1 rounded bg-slate-100 dark:bg-slate-800"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
             </div>
+
+            {/* Bloco 4: Backend */}
             <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 shadow-sm">
-              <h3 className="text-slate-500 mb-2 font-mono text-xs uppercase tracking-widest">
-                DevOps
-              </h3>
-              <p className="font-bold text-lg">Docker, CI/CD, Automação</p>
-            </div>
-            <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 shadow-sm">
-              <h3 className="text-slate-500 mb-2 font-mono text-xs uppercase tracking-widest">
+              <h3 className="text-slate-500 mb-3 font-mono text-xs uppercase tracking-widest">
                 Backend
               </h3>
-              <p className="font-bold text-lg">Node.js, Nest.js</p>
+              <div className="flex flex-wrap gap-2">
+                {profile.skills.backend.map((s) => (
+                  <span
+                    key={s}
+                    className="text-sm font-bold px-2 py-1 rounded bg-slate-100 dark:bg-slate-800"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Bloco 5: DevOps & Tools */}
+            <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 shadow-sm">
+              <h3 className="text-slate-500 mb-3 font-mono text-xs uppercase tracking-widest">
+                DevOps & Tools
+              </h3>
+              <div className="flex flex-wrap gap-2 text-sm font-bold">
+                {profile.skills.devops
+                  .concat(profile.skills.tools)
+                  .slice(0, 6)
+                  .map((s) => (
+                    <span key={s} className="text-blue-500">
+                      #{s.replace(/\s+/g, "")}
+                    </span>
+                  ))}
+              </div>
+            </div>
+
+            {/* Bloco 6: Languages (Largo na base) */}
+            <div className="md:col-span-3 p-6 rounded-3xl bg-slate-100 dark:bg-slate-800/50 border border-transparent flex items-center justify-between">
+              <span className="text-slate-500 font-mono text-xs uppercase tracking-widest">
+                Core Languages
+              </span>
+              <div className="flex gap-8">
+                {profile.skills.languages.map((lang) => (
+                  <span
+                    key={lang}
+                    className="font-bold tracking-tighter italic text-xl"
+                  >
+                    {lang}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </section>

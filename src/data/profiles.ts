@@ -36,13 +36,13 @@ usuário, qualidade de código e continuidade de entrega.
       period: "jun/2023 – atual",
       activities: [
         "Manutenção e evolução de aplicações mobile em produção",
-        "Diagnóstico e correção de falhas críticas",
+        "Liderança técnica de equipes mobile utilizando React Native e Flutter.",
         "Publicação e gerenciamento de versões (Play Console e App Store)",
         "Automação de deploy, CI/CD e padronização de código",
       ],
     },
     {
-      company: "Secretaria da Segurança Pública da Bahia (SSP-BA)",
+      company: "SSP-BA - Secretaria da Segurança Pública da Bahia",
       role: "Desenvolvedor Front-End",
       period: "2021 – 2023",
       activities: [
@@ -79,12 +79,27 @@ usuário, qualidade de código e continuidade de entrega.
   ],
 
   skills: {
-    mobile: ["React Native", "Flutter"],
-    frontend: ["React.js", "Vue.js", "HTML5", "CSS3", "TypeScript"],
-    backend: ["Node.js", "Nest.js", "REST APIs"],
-    devops: ["Docker", "CI/CD", "Automação de Deploy"],
-    tools: ["Git", "MySQL", "Scrum"],
-    languages: ["JavaScript", "TypeScript", "Dart"],
+    mobile: ["React Native", "Flutter", "iOS", "Android"],
+    frontend: [
+      "React.js",
+      "Vue.js",
+      "TypeScript",
+      "Next.js",
+      "Redux",
+      "Tailwind CSS",
+    ],
+    backend: [
+      "Node.js",
+      "NestJS",
+      "Express.js",
+      "REST APIs",
+      "Firebase",
+      "MongoDB",
+    ],
+    devops: ["Docker", "CI/CD", "Firebase"],
+    tools: ["Git", "MySQL", "Scrum", "SOLID", "Clean Architecture", "DDD"],
+    languages: ["TypeScript", "JavaScript", "Dart", "Python"],
+    innovation: ["TensorFlow", "LLM", "MQTT", "Grafana"],
   },
 
   certifications: [
