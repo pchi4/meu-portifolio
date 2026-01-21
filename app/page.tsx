@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Github,
   Linkedin,
@@ -92,6 +92,29 @@ import { BrowserMockup } from "@/src/components/WebMockup";
 <ScrollToTop />;
 
 export default function Portfolio() {
+  useEffect(() => {
+    const trackAccess = async () => {
+      const hasNotified = sessionStorage.getItem("notified_access");
+
+      if (!hasNotified) {
+        try {
+          await fetch("/api/notify", {
+            method: "POST",
+            body: JSON.stringify({
+              ua: navigator.userAgent,
+              origin: document.referrer || "Acesso Direto",
+            }),
+          });
+          sessionStorage.setItem("notified_access", "true");
+        } catch (err) {
+          console.error("Erro no tracking", err);
+        }
+      }
+    };
+
+    trackAccess();
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-slate-100 transition-colors duration-500">
       <nav className="fixed top-0 w-full z-50 border-b border-slate-200 dark:border-white/5 bg-white/70 dark:bg-slate-950/70 backdrop-blur-md">
