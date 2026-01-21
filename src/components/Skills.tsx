@@ -77,15 +77,15 @@ export function Skills() {
               ))}
           </div>
         </div>
-        <div className="md:col-span-3 p-6 rounded-3xl bg-slate-100 dark:bg-slate-800/50 border border-transparent flex items-center justify-between">
-          <span className="text-slate-500 font-mono text-xs uppercase tracking-widest">
+        <div className="md:col-span-3 p-6 rounded-3xl bg-slate-100 dark:bg-slate-800/50 border border-transparent flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8">
+          <span className="text-slate-500 font-mono text-xs uppercase tracking-widest text-center md:text-left">
             Core Languages
           </span>
-          <div className="flex gap-8">
+          <div className="flex flex-wrap justify-center md:justify-end gap-6 md:gap-8">
             {profile.skills.languages.map((lang) => (
               <span
                 key={lang}
-                className="font-bold tracking-tighter italic text-xl"
+                className="font-bold tracking-tighter italic text-xl md:text-2xl"
               >
                 {lang}
               </span>
