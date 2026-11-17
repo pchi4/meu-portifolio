@@ -4,6 +4,9 @@ import React, { useEffect } from "react";
 import { ScrollToTop } from "@/src/components/ScrollToTop";
 import { NavBar } from "@/src/layout/Navbar";
 import { Hero } from "@/src/components/Hero";
+import { About } from "@/src/components/About";
+import { Approach } from "@/src/components/Approach";
+import { Metrics } from "@/src/components/Metrics";
 import { Skills } from "@/src/components/Skills";
 import { Education } from "@/src/components/Education";
 import { Experience } from "@/src/components/Experience";
@@ -36,14 +39,17 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-slate-100 transition-colors duration-500">
+    <div className="min-h-screen site-atmosphere text-foreground transition-colors duration-500">
       <NavBar />
-      <main className="max-w-6xl mx-auto px-6 pt-32 pb-20">
+      <main className="max-w-6xl mx-auto px-6 pt-28 md:pt-32 pb-8">
         <Hero />
-        <Skills />
-        <Education />
+        <About />
+        <Metrics />
+        <Approach />
         <Experience />
         <Projects />
+        <Skills />
+        <Education />
         <Certifications />
       </main>
       <Footer />

@@ -4,58 +4,72 @@ import { profile } from "@/src/data/profiles";
 
 export function Footer() {
   return (
-    <footer className="mt-40 border-t border-slate-200 dark:border-white/5 bg-white dark:bg-slate-950/50">
+    <footer id="contato" className="mt-24 section-rule">
       <div className="max-w-6xl mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
           <Reveal>
-            <h2 className="text-4xl font-bold mb-6">
-              Vamos construir algo <br />
-              <span className="text-blue-500">incrível juntos?</span>
-            </h2>
-            <p className="text-slate-500 dark:text-slate-400 max-w-sm mb-8">
-              Engenheiro de Software focado em soluções em Frontend escaláveis e
-              arquitetura moderna.
+            <p className="font-mono text-xs tracking-widest text-accent uppercase mb-4">
+              Contato
             </p>
-            <div className="flex gap-4">
-              <a
-                href={profile.linkedin}
-                className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 hover:text-blue-500 transition-colors"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href={profile.github}
-                className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 hover:text-blue-500 transition-colors"
-              >
-                <Github size={20} />
-              </a>
+            <h2 className="font-display text-3xl md:text-4xl font-bold leading-tight mb-5 text-balance">
+              Vamos conversar sobre o próximo desafio técnico.
+            </h2>
+            <p className="text-muted max-w-md leading-relaxed mb-3">
+              {profile.openToWork}
+            </p>
+            <p className="font-mono text-xs text-muted mb-8">
+              {profile.location} · {profile.availability}
+            </p>
+            <div className="flex flex-wrap gap-3 mb-6">
               <a
                 href={`mailto:${profile.email}`}
-                className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900 hover:text-blue-500 transition-colors"
+                className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-3 text-sm font-semibold hover:bg-accent transition-colors"
               >
-                <Mail size={20} />
+                <Mail size={18} /> Falar comigo
+              </a>
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-border px-5 py-3 text-sm font-semibold hover:border-accent hover:text-accent transition-colors"
+              >
+                <Linkedin size={18} /> LinkedIn
+              </a>
+            </div>
+            <div className="flex gap-3">
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 border border-border hover:border-accent hover:text-accent transition-colors"
+                aria-label="GitHub"
+              >
+                <Github size={20} />
               </a>
             </div>
           </Reveal>
 
-          <Reveal delay={0.2}>
-            <div className="space-y-6 md:text-right">
+          <Reveal delay={0.15}>
+            <div className="space-y-8 md:text-right md:pt-10">
               <div>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">
+                <p className="font-mono text-[10px] tracking-widest text-muted uppercase mb-1">
                   Localização
                 </p>
                 <p className="text-lg font-medium">{profile.location}</p>
               </div>
               <div>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">
-                  E-mail Profissional
+                <p className="font-mono text-[10px] tracking-widest text-muted uppercase mb-1">
+                  E-mail
                 </p>
-                <p className="text-lg font-medium hover:text-blue-500 transition-colors">
-                  <a href={`mailto:${profile.email}`}>{profile.email}</a>
-                </p>
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="text-lg font-medium hover:text-accent transition-colors"
+                >
+                  {profile.email}
+                </a>
               </div>
               <div>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">
+                <p className="font-mono text-[10px] tracking-widest text-muted uppercase mb-1">
                   Telefone / WhatsApp
                 </p>
                 <p className="text-lg font-medium">{profile.phone}</p>
@@ -64,10 +78,11 @@ export function Footer() {
           </Reveal>
         </div>
 
-        <div className="mt-20 pt-8 border-t border-slate-100 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-xs font-mono">
+        <div className="mt-16 pt-6 border-t border-border flex flex-col md:flex-row justify-between items-center gap-3 font-mono text-[11px] text-muted">
           <p>
-            © {new Date().getFullYear()} {profile.name.toUpperCase()}
+            © {new Date().getFullYear()} {profile.fullName}
           </p>
+          <p>{profile.role}</p>
         </div>
       </div>
     </footer>

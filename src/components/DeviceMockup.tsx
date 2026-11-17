@@ -2,37 +2,43 @@
 import { useState } from "react";
 import { Smartphone } from "lucide-react";
 
-export function DeviceMockup({ imageSrc }: { imageSrc: string }) {
+export function DeviceMockup({
+  imageSrc,
+  alt = "App screenshot",
+  className = "",
+}: {
+  imageSrc: string;
+  alt?: string;
+  className?: string;
+}) {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <div className="relative mx-auto border-slate-900 dark:border-slate-800 bg-slate-900 border-[7px] rounded-[2rem] h-[420px] w-[210px] shadow-2xl overflow-hidden group-hover:scale-105 transition-transform duration-500 flex-shrink-0">
-      <div className="absolute top-0 inset-x-0 h-5 bg-slate-900 flex justify-center items-end pb-1 z-20">
-        <div className="w-12 h-2.5 bg-black rounded-full"></div>
+    <div
+      className={`relative mx-auto border-foreground/90 bg-foreground border-[6px] rounded-[1.75rem] h-[380px] w-[190px] shadow-xl overflow-hidden flex-shrink-0 ${className}`}
+    >
+      <div className="absolute top-0 inset-x-0 h-4 bg-foreground flex justify-center items-end pb-0.5 z-20">
+        <div className="w-10 h-2 bg-background/20 rounded-full" />
       </div>
 
-      <div className="relative w-full h-full bg-slate-950 flex items-center justify-center overflow-hidden">
+      <div className="relative w-full h-full bg-surface flex items-center justify-center overflow-hidden">
         {hasError ? (
           <div className="flex flex-col items-center gap-2 px-4 text-center">
-            <Smartphone size={32} className="text-slate-700" />
-            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-tighter">
-              Preview em breve
+            <Smartphone size={28} className="text-muted" />
+            <span className="text-[10px] font-mono text-muted uppercase">
+              Preview
             </span>
           </div>
         ) : (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={imageSrc}
-            alt="App Screenshot"
-            className="w-full h-full object-cover"
+            alt={alt}
+            className="w-full h-full object-cover object-top"
             onError={() => setHasError(true)}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
       </div>
-
-      <div className="h-[25px] w-[2px] bg-slate-800 absolute -left-[9px] top-[60px] rounded-l-lg"></div>
-      <div className="h-[35px] w-[2px] bg-slate-800 absolute -left-[9px] top-[100px] rounded-l-lg"></div>
     </div>
   );
 }

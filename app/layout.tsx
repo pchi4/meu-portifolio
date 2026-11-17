@@ -1,18 +1,32 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/src/themes/themes-provider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
+});
+
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: "--font-body",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
 });
 
 export const metadata = {
-  title: "Douglas Lopes | Engenheiro de Software",
+  metadataBase: new URL("https://douglas-loopes.vercel.app"),
+  title: "Douglas Lopes | Senior Software Engineer",
   description:
-    "Portfólio profissional de Douglas Lopes, especialista em Mobile e Frontend.",
+    "Senior Software Engineer especializado em Frontend, Full Stack, React, TypeScript e React Native — arquitetura e liderança técnica de aplicações críticas.",
   openGraph: {
-    title: "Douglas Lopes | Engenheiro de Software",
+    title: "Douglas Lopes | Senior Software Engineer",
     images: [
       {
         url: "/og-image.png",
@@ -22,7 +36,7 @@ export const metadata = {
       },
     ],
     description:
-      "Engenheiro de Software Mobile e Frontend. Confira meus projetos e trajetória acadêmica.",
+      "Arquitetura e engenharia de produtos digitais para operações críticas. React, TypeScript, React Native.",
     url: "https://douglas-loopes.vercel.app/",
     siteName: "Portfólio Douglas Lopes",
     locale: "pt_BR",
@@ -30,8 +44,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Douglas Lopes | Software Engineer",
-    description: "Engenheiro de Software & Mestrando na UFBA.",
+    title: "Douglas Lopes | Senior Software Engineer",
+    description:
+      "Frontend & Full Stack · React, TypeScript, React Native · Mestrando UFBA.",
     images: ["/og-image.png"],
   },
   icons: {
@@ -39,20 +54,15 @@ export const metadata = {
   },
 };
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"

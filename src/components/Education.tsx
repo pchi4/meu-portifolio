@@ -1,61 +1,73 @@
-import { GraduationCap } from "lucide-react";
+import { Languages } from "lucide-react";
 import { Reveal } from "@/src/components/Reveal";
 import { profile } from "@/src/data/profiles";
 
 export function Education() {
   return (
-    <section id="educacao" className="mb-32">
+    <section id="formacao" className="mb-28 md:mb-36">
       <Reveal>
-        <h2 className="text-3xl font-bold mb-12 flex items-center gap-3">
-          <GraduationCap className="text-blue-500" /> Formação Académica
-        </h2>
+        <div className="section-rule pt-8 mb-12">
+          <p className="font-mono text-xs tracking-widest text-accent uppercase mb-3">
+            04 — Formação
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold">
+            Formação acadêmica
+          </h2>
+        </div>
       </Reveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="space-y-0">
         {profile.education.map((edu, idx) => (
-          <Reveal key={idx} delay={idx * 0.1}>
-            <div className="relative group p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-md transition-all h-full">
-              {edu.status === "Cursando" && (
-                <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-blue-500/10 text-blue-500 text-[10px] font-bold uppercase tracking-wider border border-blue-500/20">
-                  Em Andamento
-                </span>
-              )}
+          <Reveal key={edu.institution} delay={idx * 0.08}>
+            <article className="grid grid-cols-1 md:grid-cols-[11rem_1fr] gap-4 md:gap-10 py-10 border-b border-border">
+              <div className="font-mono text-xs text-muted tracking-wide pt-1">
+                <p>{edu.period}</p>
+                <p
+                  className={`mt-2 ${
+                    edu.status === "Cursando" ? "text-accent" : "text-muted/70"
+                  }`}
+                >
+                  {edu.status}
+                </p>
+              </div>
 
-              <div className="flex flex-col h-full">
-                <div className="mb-6">
-                  <p className="text-blue-600 dark:text-blue-400 font-mono text-xs font-bold uppercase tracking-widest mb-2">
-                    {edu.institution.split(" – ")[0]}
-                  </p>
-                  <h3 className="text-xl font-bold leading-tight group-hover:text-blue-500 transition-colors">
-                    {edu.degree}
-                  </h3>
-                  <p className="text-slate-500 text-sm mt-1">
-                    {edu.institution.split(" – ")[1]}
-                  </p>
-                </div>
-
+              <div>
+                <h3 className="font-display text-2xl font-bold mb-1">
+                  {edu.degree}
+                </h3>
+                <p className="text-muted mb-4">{edu.institution}</p>
                 {edu.research && (
-                  <div className="mt-auto pt-6 border-t border-slate-100 dark:border-white/5">
-                    <p className="text-xs text-slate-400 font-semibold uppercase mb-2">
-                      Linha de Pesquisa:
-                    </p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 italic">
-                      {edu.research}
-                    </p>
-                  </div>
-                )}
-
-                {edu.status === "Concluído" && (
-                  <div className="mt-auto pt-6 flex items-center gap-2 text-green-600 dark:text-green-500 text-sm font-medium">
-                    <div className="w-2 h-2 rounded-full bg-green-500" />
-                    {edu.status}
-                  </div>
+                  <p className="text-foreground/80 leading-relaxed max-w-2xl">
+                    <span className="font-mono text-[10px] tracking-widest uppercase text-muted block mb-2">
+                      Linha de pesquisa
+                    </span>
+                    {edu.research}
+                  </p>
                 )}
               </div>
-            </div>
+            </article>
           </Reveal>
         ))}
       </div>
+
+      <Reveal delay={0.12}>
+        <div className="mt-10 border border-border p-6 md:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+          <div className="flex items-center gap-3 shrink-0">
+            <Languages size={20} className="text-accent" />
+            <h3 className="font-display font-bold text-lg">Idiomas</h3>
+          </div>
+          <ul className="flex flex-wrap gap-x-8 gap-y-3">
+            {profile.languagesSpoken.map((lang) => (
+              <li key={lang.name}>
+                <span className="font-medium">{lang.name}</span>
+                <span className="font-mono text-xs text-muted ml-2">
+                  {lang.level}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Reveal>
     </section>
   );
 }

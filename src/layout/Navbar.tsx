@@ -1,14 +1,21 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { profile } from "@/src/data/profiles";
+import { ThemeToggle } from "@/src/components/ThemeToggle";
+
+const links = [
+  { href: "/#experiencia", label: "Experiência" },
+  { href: "/projetos", label: "Projetos" },
+  { href: "/#competencias", label: "Competências" },
+  { href: "/#formacao", label: "Formação" },
+];
 
 export function NavBar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -17,38 +24,41 @@ export function NavBar() {
     <nav
       className={`fixed top-0 w-full z-[100] transition-all duration-300 ${
         scrolled
-          ? "border-b border-slate-200/50 dark:border-white/10 bg-white/70 dark:bg-[#020617]/70 backdrop-blur-md py-3"
+          ? "border-b border-border bg-background/80 backdrop-blur-md py-3"
           : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="group">
-          <span className="font-bold tracking-tighter text-2xl">
-            DL<span className="text-blue-500 group-hover:animate-pulse">.</span>
+      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between gap-4">
+        <a
+          href="/"
+          className="font-display text-xl font-bold tracking-tight group"
+        >
+          DL
+          <span className="text-accent group-hover:opacity-80 transition-opacity">
+            .
           </span>
         </a>
 
-        <div className="flex items-center gap-8">
-          <div className="hidden md:flex gap-8 text-sm font-semibold text-slate-600 dark:text-slate-400">
+        <div className="hidden md:flex items-center gap-8 font-mono text-xs tracking-wide text-muted">
+          {links.map((link) => (
             <a
-              href="#experiencia"
-              className="hover:text-blue-500 transition-colors"
+              key={link.href}
+              href={link.href}
+              className="hover:text-accent transition-colors"
             >
-              Experiência
+              {link.label}
             </a>
-            <a
-              href="#projetos"
-              className="hover:text-blue-500 transition-colors"
-            >
-              Projetos
-            </a>
-            <a
-              href="#educacao"
-              className="hover:text-blue-500 transition-colors"
-            >
-              Formação
-            </a>
-          </div>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <a
+            href={`mailto:${profile.email}`}
+            className="font-mono text-xs tracking-wide text-muted hover:text-accent transition-colors"
+          >
+            Contato
+          </a>
         </div>
       </div>
     </nav>

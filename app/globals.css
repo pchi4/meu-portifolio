@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f2ee;
+  --foreground: #141210;
+  --muted: #6b6560;
+  --surface: #ebe7e0;
+  --border: rgba(20, 18, 16, 0.12);
+  --accent: #c47a3a;
+  --accent-soft: rgba(196, 122, 58, 0.14);
+  --hero-glow: rgba(196, 122, 58, 0.12);
+}
+
+.dark {
+  --background: #0b0c0e;
+  --foreground: #ece8e1;
+  --muted: #9a948b;
+  --surface: #12141a;
+  --border: rgba(236, 232, 225, 0.1);
+  --accent: #d4924a;
+  --accent-soft: rgba(212, 146, 74, 0.12);
+  --hero-glow: rgba(212, 146, 74, 0.16);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--foreground);
+}
+
+.site-atmosphere {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(ellipse 90% 55% at 8% -10%, var(--hero-glow), transparent 55%),
+    radial-gradient(ellipse 70% 45% at 100% 0%, rgba(80, 100, 130, 0.08), transparent 50%),
+    linear-gradient(180deg, transparent 0%, var(--background) 100%);
+}
+
+.dark .site-atmosphere {
+  background-image:
+    radial-gradient(ellipse 90% 55% at 8% -10%, var(--hero-glow), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 95% 5%, rgba(40, 55, 80, 0.35), transparent 50%),
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      transparent 48%,
+      rgba(236, 232, 225, 0.015) 49%,
+      transparent 51%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(236, 232, 225, 0.012) 2px,
+      rgba(236, 232, 225, 0.012) 3px
+    );
+}
+
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.section-rule {
+  border-top: 1px solid var(--border);
+}
+
+.text-balance {
+  text-wrap: balance;
 }
