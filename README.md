@@ -1,27 +1,31 @@
-# 📱 Software Engineer Portfolio - Douglas Lopes
+# Douglas Lopes — Senior Software Engineer
 
-Este é o meu portfólio profissional desenvolvido com as tecnologias mais modernas do ecossistema Web, focado em performance, tipografia refinada e experiência do usuário.
+Software Engineer para operações que não podem falhar.
 
-## 🚀 Tecnologias Utilizadas
+Full stack com liderança técnica no **MOP (SSP-BA / PRODEB)**: mobile, web e arquitetura — 7 mil+ usuários, offline-first e −65% em fluxos críticos.
 
-- **Framework:** [Next.js 15 (App Router)](https://nextjs.org/)
-- **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
-- **Animações:** [Framer Motion](https://www.framer.com/motion/)
-- **Ícones:** [Lucide React](https://lucide.dev/)
-- **Gerenciamento de Temas:** [Next-Themes](https://github.com/pacocoursey/next-themes)
-- **Deployment:** [Vercel](https://vercel.com/)
+**Stack:** React Native · React · TypeScript · Node  
+**Busco:** times de produto mission-critical · remoto/híbrido · liderança técnica próxima do código
 
-## 🛠️ Destaques Técnicos
+🌐 Portfólio: [douglas-loopes.vercel.app](https://douglas-loopes.vercel.app/)  
+💼 LinkedIn: [douglas-loopes](https://linkedin.com/in/douglas-loopes)
 
-- **Design Responsivo:** Adaptado para dispositivos móveis, tablets e desktop.
-- **Dark/Light Mode:** Suporte nativo a temas com persistência.
-- **Micro-interações:** Animações de entrada (Reveal) e scroll suave para melhor UX.
-- **SEO Optimized:** Meta tags configuradas para melhor indexação e compartilhamento social.
-- **Bento Grid Layout:** Organização moderna da stack tecnológica.
+## Destaques
 
-## 📦 Como rodar o projeto localmente
+- Liderança técnica em time de 4 no ecossistema de segurança pública
+- Releases em pacote por sprint (+ hot-fix) · builds manuais Xcode / Gradle
+- Cases: MOP, App190, SGM — com prova visual nos principais
+- Mestrado em Engenharia de Software (UFBA)
 
-1. Clone o repositório:
-   ```bash
-   git clone [https://github.com/pchi4/meu-portfolio.git](https://github.com/pchi4/meu-portfolio.git)
-   ```
+## Stack do site
+
+Next.js (App Router) · Tailwind CSS · Framer Motion · next-themes · Vercel
+
+## Rodar localmente
+
+```bash
+git clone https://github.com/pchi4/meu-portfolio.git
+cd meu-portfolio
+npm install
+npm run dev
+```

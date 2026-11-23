@@ -10,15 +10,26 @@ export function About() {
             Sobre
           </p>
           <h2 className="font-display text-3xl md:text-4xl font-bold max-w-xl text-balance">
-            Engenharia com impacto operacional.
+            Trajetória em produtos mission-critical.
           </h2>
         </div>
       </Reveal>
 
       <Reveal delay={0.08}>
-        <p className="text-muted text-lg leading-relaxed max-w-3xl">
+        <p className="text-muted text-lg leading-relaxed max-w-3xl mb-8">
           {profile.summary}
         </p>
+      </Reveal>
+
+      <Reveal delay={0.12}>
+        <div className="border-l-2 border-accent pl-5 max-w-2xl">
+          <p className="font-mono text-[10px] tracking-widest text-accent uppercase mb-2">
+            O que busco
+          </p>
+          <p className="font-display text-lg md:text-xl font-semibold text-foreground/90 text-balance">
+            {profile.seeking}
+          </p>
+        </div>
       </Reveal>
     </section>
   );

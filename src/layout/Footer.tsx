@@ -12,20 +12,23 @@ export function Footer() {
               Contato
             </p>
             <h2 className="font-display text-3xl md:text-4xl font-bold leading-tight mb-5 text-balance">
-              Vamos conversar sobre o próximo desafio técnico.
+              {profile.conversationSubject}.
             </h2>
             <p className="text-muted max-w-md leading-relaxed mb-3">
               {profile.openToWork}
+            </p>
+            <p className="text-foreground/85 max-w-md leading-relaxed mb-3 text-sm">
+              {profile.seeking}
             </p>
             <p className="font-mono text-xs text-muted mb-8">
               {profile.location} · {profile.availability}
             </p>
             <div className="flex flex-wrap gap-3 mb-6">
               <a
-                href={`mailto:${profile.email}`}
+                href={`mailto:${profile.email}?subject=${encodeURIComponent(profile.conversationSubject)}`}
                 className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-3 text-sm font-semibold hover:bg-accent transition-colors"
               >
-                <Mail size={18} /> Falar comigo
+                <Mail size={18} /> {profile.conversationSubject}
               </a>
               <a
                 href={profile.linkedin}

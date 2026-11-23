@@ -90,6 +90,31 @@ export default async function ProjectPage({
               {project.description}
             </p>
 
+            {project.metrics && project.metrics.length > 0 && (
+              <div className="grid grid-cols-3 gap-0 max-w-lg mb-8 border border-border">
+                {project.metrics.map((m) => (
+                  <div
+                    key={m.label}
+                    className="p-4 border-r border-border last:border-r-0"
+                  >
+                    <p className="font-display text-2xl font-bold text-accent tracking-tight">
+                      {m.value}
+                    </p>
+                    <p className="font-mono text-[10px] text-muted tracking-wide mt-1">
+                      {m.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {project.evidence === "supporting" && (
+              <p className="font-mono text-[11px] tracking-wide text-muted mb-6 max-w-xl">
+                Evidência visual limitada (ambiente institucional) — foco em
+                contexto, stack e impacto da atuação.
+              </p>
+            )}
+
             <div className="flex flex-wrap gap-3">
               {project.store && (
                 <a
@@ -133,9 +158,13 @@ export default async function ProjectPage({
 
         {portraitImages.length > 0 ? (
           <div className="flex flex-wrap justify-center gap-6 md:gap-10 py-8 mb-14 border border-border bg-surface/40">
-            {portraitImages.map((img) => (
+            {portraitImages.map((img, i) => (
               <figure key={img.src} className="text-center">
-                <DeviceMockup imageSrc={img.src} alt={img.alt} />
+                <DeviceMockup
+                  imageSrc={img.src}
+                  alt={img.alt}
+                  priority={i === 0}
+                />
                 {img.caption && (
                   <figcaption className="mt-4 max-w-[190px] mx-auto font-mono text-[11px] text-muted tracking-wide">
                     {img.caption}

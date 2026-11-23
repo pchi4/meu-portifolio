@@ -1,15 +1,18 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { Smartphone } from "lucide-react";
 
 export function DeviceMockup({
   imageSrc,
   alt = "App screenshot",
   className = "",
+  priority = false,
 }: {
   imageSrc: string;
   alt?: string;
   className?: string;
+  priority?: boolean;
 }) {
   const [hasError, setHasError] = useState(false);
 
@@ -30,11 +33,13 @@ export function DeviceMockup({
             </span>
           </div>
         ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <Image
             src={imageSrc}
             alt={alt}
-            className="w-full h-full object-cover object-top"
+            fill
+            priority={priority}
+            sizes="190px"
+            className="object-cover object-top"
             onError={() => setHasError(true)}
           />
         )}

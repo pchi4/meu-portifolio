@@ -5,6 +5,11 @@ export type ProjectImage = {
   orientation?: "portrait" | "landscape";
 };
 
+export type ProjectMetric = {
+  value: string;
+  label: string;
+};
+
 export type Project = {
   slug: string;
   name: string;
@@ -18,11 +23,14 @@ export type Project = {
   tech: string[];
   confidential: boolean;
   featured: boolean;
+  /** strong = prints/métricas; supporting = atuação real, evidência visual limitada */
+  evidence: "strong" | "supporting";
   company?: string;
   github?: string;
   store?: string;
   cover: string;
   images: ProjectImage[];
+  metrics?: ProjectMetric[];
   icon: "mobile" | "vision" | "web" | "iot";
 };
 
@@ -41,19 +49,50 @@ export const profile = {
   resume: "/curriculo-douglas-lopes.pdf",
 
   summary:
-    "Senior Software Engineer com experiência em arquitetura e desenvolvimento de aplicações mobile e web para ambientes operacionais críticos. Especialista em React Native, Expo e TypeScript, com atuação em React, APIs REST e backend. Liderança técnica, modernização de legados, performance, offline-first, CI/CD e AI-assisted software engineering.",
+    "Senior Software Engineer com experiência em arquitetura e desenvolvimento de aplicações mobile e web para ambientes operacionais críticos. Especialista em React Native, Expo e TypeScript, com atuação em React, APIs REST e backend. Liderança técnica em time de 4, modernização de legados, performance, offline-first, releases nativos e AI-assisted software engineering.",
+
+  /** Frase de posicionamento — o gancho memorável da primeira dobra */
+  positioning:
+    "Software Engineer para operações que não podem falhar.",
 
   tagline:
-    "Arquitetura e engenharia de produtos digitais para operações críticas.",
+    "Full stack com liderança técnica no MOP (SSP-BA): mobile, web e arquitetura — 7 mil+ usuários, offline-first e −65% em fluxos críticos.",
+
+  stackLine: "React Native · React · TypeScript · Node",
+
+  conversationSubject: "Vamos falar de produto crítico",
 
   openToWork:
     "Aberto a oportunidades remotas ou híbridas com times de engenharia.",
 
+  /** Alvo de carreira — o que o recrutador precisa encaixar rápido */
+  seeking:
+    "Times de produto mission-critical · React Native / React / TypeScript · remoto ou híbrido · liderança técnica próxima do código.",
+
+  practice: [
+    {
+      title: "Liderança em time enxuto",
+      text: "Time de 4 engenheiros (incluindo eu): padrões, modularização, code review e decisões técnicas no dia a dia do MOP e do App190.",
+    },
+    {
+      title: "Release por sprint + hot-fix",
+      text: "Pacote de mudanças por sprint, com hot-fix quando necessário. Versionamento semântico (major / minor / patch), scripts de clean build e leitura de arquivos de ambiente — builds manuais no Xcode (iOS) e com Gradle no VS Code (Android).",
+    },
+    {
+      title: "Integrações mission-critical",
+      text: "Produtos com baixo margem de falha: MOP (campo, custódia, RIP) e App190 (SOS com validação de medida protetiva junto ao TJ) — confiabilidade acima de feature theater.",
+    },
+    {
+      title: "AI na rotina de engenharia",
+      text: "Agentes adequados ao nosso fluxo, conexões MCP e AI com agents em chat — análise de codebase, refatoração e aceleração de entrega com critério.",
+    },
+  ],
+
   metrics: [
-    { value: "7k+", label: "Usuários em plataformas SSP (MOP)" },
+    { value: "7k+", label: "Usuários em operação (MOP)" },
     { value: "−65%", label: "Tempo em fluxos críticos" },
-    { value: "−30%", label: "Tempo de render (New Architecture)" },
-    { value: "UFBA", label: "Mestrado em andamento" },
+    { value: "−30%", label: "Render com New Architecture" },
+    { value: "4", label: "Engenheiros no time (incl. eu)" },
   ],
 
   education: [
@@ -64,6 +103,8 @@ export const profile = {
       period: "jul/2025 – 2027",
       status: "Cursando",
       research: "Arquitetura de Sistemas e Engenharia de Software Contemporânea",
+      bridge:
+        "A pesquisa alimenta o que já pratico em produção: arquitetura evolutiva, confiabilidade e sistemas que sustentam operação crítica — o mesmo eixo do MOP e dos produtos SSP/PRODEB.",
     },
     {
       institution: "Universidade Cidade de São Paulo (Unicid)",
@@ -82,15 +123,15 @@ export const profile = {
       period: "jun/2023 – atual",
       location: "Salvador, Bahia · Presencial",
       summary:
-        "Liderança técnica e evolução arquitetural de apps mobile e web de segurança pública — em especial o MOP (operações de campo) e o App190 (pedido de socorro em tempo real pelo cidadão).",
+        "Liderança técnica em time de 4 engenheiros e evolução arquitetural de apps mobile e web de segurança pública — em especial o MOP (operações de campo) e o App190 (pedido de socorro em tempo real pelo cidadão).",
       activities: [
-        "Defini padrões, modularização, code review e decisões técnicas para o time.",
+        "Liderei tecnicamente um time de 4 (incluindo eu): padrões, modularização, code review e decisões de arquitetura.",
         "Arquitetura com React Native, Expo, React e TypeScript — Clean Architecture, SOLID e feature-based.",
         "Adotei React Native New Architecture (Fabric/TurboModules), Hermes e JSI; −30% no tempo de renderização em fluxos críticos.",
         "Offline-first com TanStack Query e MMKV para operação com conectividade limitada.",
-        "Evoluí o MOP (missões de campo) e o App190 (SOS / urgência cidadã, incl. medida protetiva e motoristas de app).",
-        "CI/CD com GitHub Actions, Fastlane e Expo EAS — releases na App Store e Google Play.",
-        "Apliquei OpenAI Codex e IA generativa em análise de codebase, refatoração, code review e workflows com agents/skills.",
+        "Evoluí o MOP (missões de campo, custódia, RIP) e o App190 (SOS cidadão — incl. validação de medida protetiva com o TJ e SOS para motoristas de app).",
+        "Publicação em pacote por sprint (e hot-fix quando preciso), com versionamento semântico (major / minor / patch): clean build, leitura de arquivos de ambiente e builds manuais no Xcode e com Gradle no VS Code para artefatos de store.",
+        "AI-assisted engineering: agentes alinhados à rotina do time, conexões MCP e agents em chat para análise de codebase, refatoração e aceleração de entrega.",
       ],
     },
     {
@@ -136,14 +177,19 @@ export const profile = {
       challenge:
         "Usabilidade e confiabilidade em campo, redes instáveis, sincronização sensível, alta disponibilidade e fluxos documentais (RIP) com localização precisa.",
       solution:
-        "React Native + Expo + TypeScript, Clean Architecture, offline-first com TanStack Query e MMKV, New Architecture (Fabric/TurboModules) e CI/CD com EAS/Fastlane — incluindo jornadas de RIP com mapa, leitura e exportação.",
+        "React Native + Expo + TypeScript, Clean Architecture, offline-first com TanStack Query e MMKV, New Architecture (Fabric/TurboModules) e pipeline de release com builds manuais (Xcode / Gradle) — incluindo jornadas de RIP com mapa, leitura e exportação.",
       impact:
-        "Na prática: mais produtividade (abordagens e verificações), respaldo operacional com policiamento orientado a dados e maior segurança do policial com acesso rápido à informação. Também −65% no carregamento de fluxos críticos e −30% no tempo de renderização.",
+        "Na prática: mais produtividade (abordagens e verificações), respaldo operacional com policiamento orientado a dados e maior segurança do policial com acesso rápido à informação. Também −65% no carregamento de fluxos críticos e −30% no tempo de renderização — com releases em pacote por sprint, hot-fix quando necessário e builds manuais (Xcode / Gradle).",
       highlights: [
         "Informação e comunicação nas mãos do policial em campo",
         "RIP — local do fato, visualização e geração de PDF/resumo",
         "Offline-first com TanStack Query e MMKV",
-        "New Architecture, Hermes, JSI e CI/CD (EAS / Fastlane)",
+        "Release: pacote por sprint + hot-fix · builds manuais Xcode/Gradle",
+      ],
+      metrics: [
+        { value: "7k+", label: "Usuários em operação" },
+        { value: "−65%", label: "Fluxos críticos" },
+        { value: "−30%", label: "Tempo de render" },
       ],
       tech: [
         "React Native",
@@ -155,6 +201,7 @@ export const profile = {
       ],
       confidential: false,
       featured: true,
+      evidence: "strong",
       company: "PRODEB / SSP-BA",
       store:
         "https://play.google.com/store/apps/details?id=com.ssp.mop",
@@ -218,20 +265,21 @@ export const profile = {
       story:
         "O App190 nasceu para aproximar o cidadão das forças de segurança em situações de emergência: um pedido de socorro em tempo real, direto pelo celular — com locais favoritos, discagem rápida (190, 192, 193) e registro de ocorrência. A ideia evoluiu para cobrir contextos específicos de risco. No SOS Mulher, após login a aplicação validava informações junto ao Tribunal de Justiça; havendo medida protetiva, o botão de emergência para a Central 190 era exibido. No acionamento, o cidadão podia detalhar o tipo de ocorrência (agressão, ameaça, assédio) ou, se não conseguisse, o pedido era enviado automaticamente em poucos segundos como violência contra a mulher. Havia também o SOS voltado a motoristas de aplicativos. Atuei na evolução técnica (arquitetura, performance, confiabilidade e integrações). O conceito seguiu amadurecendo, mas o app ficou pouco tempo em produção — ainda assim, um aprendizado intenso sobre produtos mission-critical com latência, segurança e responsabilidade social.",
       challenge:
-        "Garantir acionamento rápido e confiável em cenários de urgência, com fluxos sensíveis (medida protetiva integrada ao TJ, SOS para motoristas), seleção precisa de local e baixa margem para falha.",
+        "Garantir acionamento rápido e confiável em cenários de urgência, com fluxos sensíveis (medida protetiva integrada ao TJ, SOS para motoristas), seleção precisa de local e baixa margem para falha — integração crítica em que latência ou erro tem custo humano.",
       solution:
-        "App em React Native + TypeScript com jornadas de SOS, mapa para local do fato, countdown de envio automático e integrações com o ecossistema da segurança pública.",
+        "App em React Native + TypeScript com jornadas de SOS, mapa para local do fato, countdown de envio automático e integração com o ecossistema da segurança pública (incl. validação de medida protetiva junto ao Tribunal de Justiça).",
       impact:
         "Validou um canal digital de pedido de socorro em tempo real e especializações de SOS (medida protetiva e motoristas de app). Apesar do ciclo curto em produção, fortaleceu a base técnica de produtos de emergência no contexto SSP-BA / PRODEB.",
       highlights: [
         "Pedido de socorro em tempo real ao cidadão",
-        "SOS Mulher com validação de medida protetiva (TJ)",
+        "Integração crítica: SOS Mulher com validação de medida protetiva (TJ)",
         "SOS para motoristas de aplicativos",
         "Envio automático em segundos quando não é possível detalhar",
       ],
       tech: ["React Native", "TypeScript", "Expo", "CI/CD"],
       confidential: false,
       featured: true,
+      evidence: "strong",
       company: "PRODEB / SSP-BA",
       cover: "/projects/app190-home.png",
       images: [
@@ -265,28 +313,29 @@ export const profile = {
       description:
         "Sistema web para consulta e monitoramento de veículos e pessoas, integrando proprietários, restrições e movimentações de redes de câmeras.",
       story:
-        "Desenvolvido no contexto da SSP-BA, o Sentinela centraliza consultas e monitoramento operacional com dados de restrições e câmeras — apoiando decisões em tempo quase real.",
+        "No contexto da SSP-BA, atuei na evolução e sustentação do Sentinela — sistema de consultas e monitoramento com dados de restrições e câmeras. A evidência visual aqui é limitada (ambiente institucional), então o foco deste case é o contexto e a stack, não um walkthrough de produto.",
       challenge:
         "Integrar múltiplas fontes (pessoas, veículos, restrições, câmeras) com interface clara para uso operacional.",
       solution:
         "Frontend em Vue consumindo APIs REST internas, com foco em usabilidade e confiabilidade das consultas.",
       impact:
-        "Ferramenta de monitoramento usada em processos de inteligência e segurança pública.",
+        "Apoiou processos de inteligência e monitoramento na operação diária da segurança pública.",
       highlights: [
-        "Consultas de veículos e pessoas",
-        "Integração com redes de câmeras",
+        "Evolução e sustentação de consultas operacionais",
+        "Integração com restrições e redes de câmeras",
         "Stack Vue + REST APIs",
       ],
       tech: ["Vue", "JavaScript", "REST APIs"],
       confidential: false,
       featured: false,
+      evidence: "supporting",
       company: "SSP-BA",
       cover: "/projects/sentinela-cover.jpg",
       images: [
         {
           src: "/projects/sentinela-cover.jpg",
           alt: "Ilustração conceitual do Sentinela",
-          caption: "Monitoramento e inteligência — conceito visual.",
+          caption: "Contexto visual — evidência de produto limitada.",
         },
       ],
       icon: "web",
@@ -312,7 +361,8 @@ export const profile = {
       ],
       tech: ["Vue", "JavaScript", "REST APIs"],
       confidential: false,
-      featured: true,
+      featured: false,
+      evidence: "strong",
       company: "SSP-BA",
       cover: "/projects/sgm-consulta.png",
       images: [
@@ -346,7 +396,7 @@ export const profile = {
       description:
         "Sistema para gestão e contabilização de carga horária de servidores e suporte ao cálculo de horas extraordinárias.",
       story:
-        "O Hydra apoia a gestão de jornada na SSP-BA: contabilização de carga horária de servidores e processos ligados a horas extraordinárias. Participei do desenvolvimento e sustentação da solução, com foco em regras de negócio de ponto/horas e confiabilidade dos dados exibidos às áreas administrativas.",
+        "Participei do desenvolvimento e sustentação do Hydra na SSP-BA — gestão de jornada, carga horária e horas extraordinárias. Como o sistema vive em ambiente institucional, este case é de atuação e regras de negócio, sem walkthrough visual completo.",
       challenge:
         "Traduzir regras complexas de carga horária e extras em uma interface confiável, auditável e fácil de operar no dia a dia institucional.",
       solution:
@@ -361,13 +411,14 @@ export const profile = {
       tech: ["React", "TypeScript", "REST APIs", "JavaScript"],
       confidential: false,
       featured: false,
+      evidence: "supporting",
       company: "SSP-BA",
       cover: "/projects/hydra-cover.jpg",
       images: [
         {
           src: "/projects/hydra-cover.jpg",
           alt: "Ilustração conceitual do Hydra",
-          caption: "Gestão de carga horária — conceito visual.",
+          caption: "Contexto visual — evidência de produto limitada.",
         },
       ],
       icon: "web",
@@ -394,6 +445,7 @@ export const profile = {
       github: "https://github.com/pchi4/device-iot-edg",
       confidential: false,
       featured: false,
+      evidence: "supporting",
       company: "UFBA",
       cover: "/projects/edge-vision-cover.jpg",
       images: [
@@ -446,9 +498,10 @@ export const profile = {
     ],
     ai: [
       "OpenAI Codex",
+      "Custom Agents",
+      "MCP Connections",
+      "Agents in Chat",
       "AI-assisted Dev",
-      "Agentic Workflows",
-      "Context Engineering",
     ],
   },
 

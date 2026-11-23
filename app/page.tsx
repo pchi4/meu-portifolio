@@ -6,7 +6,6 @@ import { NavBar } from "@/src/layout/Navbar";
 import { Hero } from "@/src/components/Hero";
 import { About } from "@/src/components/About";
 import { Approach } from "@/src/components/Approach";
-import { Metrics } from "@/src/components/Metrics";
 import { Skills } from "@/src/components/Skills";
 import { Education } from "@/src/components/Education";
 import { Experience } from "@/src/components/Experience";
@@ -43,11 +42,10 @@ export default function Portfolio() {
       <NavBar />
       <main className="max-w-6xl mx-auto px-6 pt-28 md:pt-32 pb-8">
         <Hero />
-        <About />
-        <Metrics />
-        <Approach />
-        <Experience />
         <Projects />
+        <Experience />
+        <About />
+        <Approach />
         <Skills />
         <Education />
         <Certifications />

@@ -8,7 +8,7 @@ import { Footer } from "@/src/layout/Footer";
 export const metadata = {
   title: "Projetos | Douglas Lopes",
   description:
-    "Portfólio de projetos — MOP, App190, Sentinela, SGM, Hydra, Edge Vision e mais.",
+    "Case hero MOP (7k+ usuários) e seleção — App190, SGM, Sentinela, Hydra, Edge Vision.",
 };
 
 export default function ProjectsIndexPage() {
@@ -31,11 +31,11 @@ export default function ProjectsIndexPage() {
             Todos os projetos
           </p>
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4 text-balance">
-            Histórias de produto e engenharia
+            Seleção com prova visual
           </h1>
           <p className="text-muted text-lg leading-relaxed">
-            Do mission-critical de segurança pública a MVPs de edge AI — contexto,
-            desafios e decisões técnicas.
+            MOP e App190 em destaque. Demais cases com transparência sobre o
+            nível de evidência — prints fortes vs. atuação institucional.
           </p>
         </div>
 
@@ -43,8 +43,8 @@ export default function ProjectsIndexPage() {
           <h2 className="font-mono text-[11px] tracking-widest text-muted uppercase mb-6">
             Em destaque
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {featured.map((proj) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {featured.map((proj, i) => (
               <Link
                 key={proj.slug}
                 href={`/projetos/${proj.slug}`}
@@ -55,20 +55,33 @@ export default function ProjectsIndexPage() {
                     src={proj.cover}
                     alt={proj.name}
                     fill
+                    priority={i === 0}
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </div>
                 <div className="p-5 flex-1 flex flex-col">
-                  <p className="font-mono text-[11px] text-muted mb-2">
-                    {proj.period}
-                  </p>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    {i === 0 && (
+                      <span className="font-mono text-[10px] tracking-widest uppercase text-accent border border-accent/40 px-2 py-0.5">
+                        Case hero
+                      </span>
+                    )}
+                    <p className="font-mono text-[11px] text-muted">
+                      {proj.period}
+                    </p>
+                  </div>
                   <h3 className="font-display text-xl font-bold mb-2 group-hover:text-accent transition-colors">
                     {proj.name}
                   </h3>
                   <p className="text-sm text-muted leading-relaxed line-clamp-3 mb-4 flex-1">
                     {proj.description}
                   </p>
+                  {proj.metrics && (
+                    <p className="font-mono text-[11px] text-accent mb-3 tracking-wide">
+                      {proj.metrics.map((m) => m.value).join(" · ")}
+                    </p>
+                  )}
                   <span className="inline-flex items-center gap-1 text-sm font-semibold">
                     Ver história <ArrowUpRight size={14} />
                   </span>
@@ -83,7 +96,13 @@ export default function ProjectsIndexPage() {
             Demais projetos
           </h2>
           <div className="border border-border divide-y divide-border">
-            {others.map((proj, idx) => (
+            {[...others]
+              .sort((a, b) => {
+                if (a.slug === "sgm") return -1;
+                if (b.slug === "sgm") return 1;
+                return 0;
+              })
+              .map((proj, idx) => (
               <Link
                 key={proj.slug}
                 href={`/projetos/${proj.slug}`}
@@ -102,6 +121,7 @@ export default function ProjectsIndexPage() {
                   <p className="font-mono text-[11px] text-muted mb-1">
                     {String(idx + 1).padStart(2, "0")} · {proj.period}
                     {proj.company ? ` · ${proj.company}` : ""}
+                    {proj.evidence === "supporting" ? " · evidência limitada" : ""}
                   </p>
                   <h3 className="font-display text-xl font-bold mb-1 group-hover:text-accent transition-colors">
                     {proj.name}

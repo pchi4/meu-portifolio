@@ -5,8 +5,8 @@ import { profile } from "@/src/data/profiles";
 import { ThemeToggle } from "@/src/components/ThemeToggle";
 
 const links = [
+  { href: "/#projetos", label: "Projetos" },
   { href: "/#experiencia", label: "Experiência" },
-  { href: "/projetos", label: "Projetos" },
   { href: "/#competencias", label: "Competências" },
   { href: "/#formacao", label: "Formação" },
 ];

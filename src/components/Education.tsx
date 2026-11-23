@@ -37,12 +37,19 @@ export function Education() {
                 </h3>
                 <p className="text-muted mb-4">{edu.institution}</p>
                 {edu.research && (
-                  <p className="text-foreground/80 leading-relaxed max-w-2xl">
-                    <span className="font-mono text-[10px] tracking-widest uppercase text-muted block mb-2">
-                      Linha de pesquisa
-                    </span>
-                    {edu.research}
-                  </p>
+                  <div className="max-w-2xl space-y-4">
+                    <p className="text-foreground/80 leading-relaxed">
+                      <span className="font-mono text-[10px] tracking-widest uppercase text-muted block mb-2">
+                        Linha de pesquisa
+                      </span>
+                      {edu.research}
+                    </p>
+                    {"bridge" in edu && edu.bridge && (
+                      <p className="text-muted leading-relaxed border-l border-accent/50 pl-4">
+                        {edu.bridge}
+                      </p>
+                    )}
+                  </div>
                 )}
               </div>
             </article>

@@ -24,19 +24,19 @@ export const metadata = {
   metadataBase: new URL("https://douglas-loopes.vercel.app"),
   title: "Douglas Lopes | Senior Software Engineer",
   description:
-    "Senior Software Engineer especializado em Frontend, Full Stack, React, TypeScript e React Native — arquitetura e liderança técnica de aplicações críticas.",
+    "Software Engineer para operações que não podem falhar. Full stack — mobile, web e arquitetura. Liderança técnica no MOP (SSP-BA): 7 mil+ usuários, offline-first e −65% em fluxos críticos.",
   openGraph: {
     title: "Douglas Lopes | Senior Software Engineer",
     images: [
       {
         url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Douglas Lopes Portfolio Preview",
+        width: 1280,
+        height: 720,
+        alt: "Douglas Lopes — Senior Software Engineer · MOP 7k+ usuários",
       },
     ],
     description:
-      "Arquitetura e engenharia de produtos digitais para operações críticas. React, TypeScript, React Native.",
+      "Full stack com liderança técnica no MOP: 7 mil+ usuários, offline-first e −65% em fluxos críticos. React Native · React · TypeScript.",
     url: "https://douglas-loopes.vercel.app/",
     siteName: "Portfólio Douglas Lopes",
     locale: "pt_BR",
@@ -46,7 +46,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Douglas Lopes | Senior Software Engineer",
     description:
-      "Frontend & Full Stack · React, TypeScript, React Native · Mestrando UFBA.",
+      "Full stack · MOP 7k+ usuários · −65% em fluxos críticos · React Native, React, TypeScript.",
     images: ["/og-image.png"],
   },
   icons: {
