@@ -308,24 +308,33 @@ export const profile = {
     },
     {
       slug: "sentinela",
-      name: "Sentinela — Inteligência e Monitoramento",
+      name: "Sentinela — Monitoramento de Veículos e Câmeras",
       period: "2021 – 2023",
       description:
-        "Sistema web para consulta e monitoramento de veículos e pessoas, integrando proprietários, restrições e movimentações de redes de câmeras.",
+        "Sistema web da SSP-BA para consulta de veículos, alertas de restrição, rastreamento e passagem em redes de câmeras (Salvador, Lauro de Freitas e CBN), integrado ao Cortex/Sentry.",
       story:
-        "No contexto da SSP-BA, atuei na evolução e sustentação do Sentinela — sistema de consultas e monitoramento com dados de restrições e câmeras. A evidência visual aqui é limitada (ambiente institucional), então o foco deste case é o contexto e a stack, não um walkthrough de produto.",
+        "O Sentinela é a ferramenta operacional da SSP-BA (SCTI) para monitorar passagem de veículos em câmeras e cruzar isso com restrições, proprietário/possuidor e movimentações. Atuei na evolução e sustentação do frontend: login por matrícula com termo de uso; home com KPIs de alertas e histórico de consultas; consulta simples e detalhada de veículo; alertas de restrição em tempo quase real; batedor e movimentações por período; rastreamento individual e em grupo (com notificação via Telegram); módulos CICOM (alerta temporário, ocorrência e whitelist); e relatório de câmeras de Salvador em mapa. Papéis (admin, NI, CICOM, suporte) controlam o menu e as permissões de cada fluxo.",
       challenge:
-        "Integrar múltiplas fontes (pessoas, veículos, restrições, câmeras) com interface clara para uso operacional.",
+        "Unificar Cortex/Sentry, restrições, OCR de câmeras e fluxos CICOM numa UI operacional clara — com perfis distintos e dados sensíveis de segurança pública.",
       solution:
-        "Frontend em Vue consumindo APIs REST internas, com foco em usabilidade e confiabilidade das consultas.",
+        "SPA em Vue 2 + Vuetify sobre Meteor/Mongo, Vuex e APIs REST (Cortex/Sentry, MJSP, PPE), com publicações reativas, mapas (Google Maps) e exportação PDF onde o fluxo operacional pedia.",
       impact:
-        "Apoiou processos de inteligência e monitoramento na operação diária da segurança pública.",
+        "Centralizou consulta, alerta e rastreamento de veículos para inteligência e operação diária — da placa ao mapa de câmeras — com auditoria de consultas e controle por perfil.",
       highlights: [
-        "Evolução e sustentação de consultas operacionais",
-        "Integração com restrições e redes de câmeras",
-        "Stack Vue + REST APIs",
+        "Consulta simples/detalhada: veículo, restrições, proprietário e movimentações",
+        "Alertas de restrição + rastreamento (individual, grupo e Telegram)",
+        "CICOM: alerta temporário, ocorrência e veículos desconsiderados",
+        "Mapa de câmeras Salvador e KPIs de incidência na home",
       ],
-      tech: ["Vue", "JavaScript", "REST APIs"],
+      tech: [
+        "Vue 2",
+        "Vuetify",
+        "Meteor",
+        "Vuex",
+        "MongoDB",
+        "REST (Cortex/Sentry)",
+        "Google Maps",
+      ],
       confidential: false,
       featured: false,
       evidence: "supporting",
@@ -335,7 +344,8 @@ export const profile = {
         {
           src: "/projects/sentinela-cover.jpg",
           alt: "Ilustração conceitual do Sentinela",
-          caption: "Contexto visual — evidência de produto limitada.",
+          caption:
+            "Contexto visual — prints de produto pendentes (ambiente intranet).",
         },
       ],
       icon: "web",
@@ -391,24 +401,32 @@ export const profile = {
     },
     {
       slug: "hydra",
-      name: "Hydra",
+      name: "Hydra — Escalas e Carga Horária",
       period: "2021 – 2023",
       description:
-        "Sistema para gestão e contabilização de carga horária de servidores e suporte ao cálculo de horas extraordinárias.",
+        "Sistema web da SSP-BA para cadastro e autorização de escalas, delimitar carga horária, justificativas e gestão de servidores — com relatórios em PDF.",
       story:
-        "Participei do desenvolvimento e sustentação do Hydra na SSP-BA — gestão de jornada, carga horária e horas extraordinárias. Como o sistema vive em ambiente institucional, este case é de atuação e regras de negócio, sem walkthrough visual completo.",
+        "O Hydra organiza a jornada dos servidores da SSP-BA: o servidor/gestor cadastra escalas por mês/ano com períodos e justificativas; o gestor/admin delimita carga horária, autoriza escalas e acompanha horas registradas × restantes × trabalhadas. Há cadastro/consulta de servidores, administração de unidade/setor/cargo, cadastro de justificativas e relatório geral exportável em PDF. Atuei no frontend React (Ant Design + React Query + REST): fluxos de escala, autorização, carga horária e refatoração de módulos administrativos para hooks/queries — com papéis admin, gestor, user e suporte controlando o menu.",
       challenge:
-        "Traduzir regras complexas de carga horária e extras em uma interface confiável, auditável e fácil de operar no dia a dia institucional.",
+        "Traduzir regras de jornada (limites, autorização, justificativas e papéis) numa UI confiável e operável no dia a dia institucional — sem quebrar o fluxo de quem cadastra e de quem aprova.",
       solution:
-        "Sistema web com React/TypeScript (e integrações REST), orientado a consulta, consolidação e acompanhamento de horas.",
+        "SPA em React 17 + Ant Design consumindo API REST (JWT), com React Query para cache/invalidação nos fluxos de escala e admin, e geração de PDF (@react-pdf) nos relatórios.",
       impact:
-        "Apoiou processos administrativos de jornada e horas extras com maior rastreabilidade e menos retrabalho manual.",
+        "Centralizou escala, carga horária e autorização num único fluxo web — menos planilha manual e mais rastreabilidade para gestores e suporte SGTO.",
       highlights: [
-        "Contabilização de carga horária",
-        "Suporte a horas extraordinárias",
-        "Fluxos administrativos institucionais",
+        "Escala: cadastrar, consultar, autorizar e delimitar carga horária",
+        "Justificativas + relatório geral em PDF",
+        "Servidores e admin (unidade, setor, cargo) por perfil",
+        "React Query e hooks nos módulos de escala e administração",
       ],
-      tech: ["React", "TypeScript", "REST APIs", "JavaScript"],
+      tech: [
+        "React 17",
+        "Ant Design",
+        "React Query",
+        "Axios",
+        "REST APIs",
+        "react-pdf",
+      ],
       confidential: false,
       featured: false,
       evidence: "supporting",
@@ -418,7 +436,8 @@ export const profile = {
         {
           src: "/projects/hydra-cover.jpg",
           alt: "Ilustração conceitual do Hydra",
-          caption: "Contexto visual — evidência de produto limitada.",
+          caption:
+            "Contexto visual — prints de produto pendentes (ambiente institucional).",
         },
       ],
       icon: "web",
