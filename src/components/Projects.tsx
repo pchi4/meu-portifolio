@@ -307,8 +307,11 @@ export function Projects() {
                   </Link>
                 </h3>
                 <p className="text-muted leading-relaxed mb-6 max-w-xl">
-                  {sgm.description} Prova de cobertura full stack além do
-                  mobile — Vue, REST e fluxos administrativos reais.
+                  {sgm.description} Prova full stack além do mobile —{" "}
+                  <span className="text-foreground/85">
+                    Nuxt 3, Vue Query e TypeScript
+                  </span>{" "}
+                  em fluxo real de ouvidoria.
                 </p>
                 <Link
                   href={`/projetos/${sgm.slug}`}
@@ -330,11 +333,11 @@ export function Projects() {
                 Mais projetos
               </p>
               <p className="font-display text-xl md:text-2xl font-bold mb-2">
-                Sentinela, Hydra e Edge Vision
+                Trio web SSP + Edge Vision
               </p>
               <p className="text-muted text-sm max-w-md leading-relaxed">
-                Atuação institucional e MVP — com transparência sobre nível de
-                evidência visual.
+                SGM (ouvidoria) · Hydra (escalas) · Sentinela (câmeras) — três
+                domínios institucionais. Edge Vision como MVP de visão na borda.
               </p>
             </div>
             <Link

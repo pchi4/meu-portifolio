@@ -141,12 +141,12 @@ export const profile = {
       period: "jun/2022 – mai/2023",
       location: "Salvador, Bahia · Presencial",
       summary:
-        "Desenvolvimento e sustentação de aplicações web e mobile (Sentinela, SGM, MOP, Hydra) com Vue, React Native, JavaScript/TypeScript e APIs REST.",
+        "Desenvolvimento e sustentação de aplicações web e mobile na SSP-BA — trio web SGM (ouvidoria), Hydra (escalas) e Sentinela (câmeras), além de MOP — com Vue/Nuxt, React Native, TypeScript e APIs REST.",
       activities: [
-        "Evoluí Sentinela e SGM em Vue, além de MOP e Hydra, para segurança pública e processos administrativos.",
+        "Evoluí o trio web institucional: SGM (Nuxt 3 / Vue Query), Hydra (React / React Query) e Sentinela (Vue / Meteor), além do MOP.",
         "Modernizei módulos legados com Clean Architecture, SOLID e modularização.",
         "Otimizei estado, integrações REST, fluxos assíncronos e performance.",
-        "Participei do ciclo completo: requisitos, análise, desenvolvimento, review, testes e sustentação.",
+        "Participei do ciclo completo: requisitos, análise, desenvolvimento, review, testes (incl. Cypress no SGM) e sustentação.",
       ],
     },
     {
@@ -355,21 +355,32 @@ export const profile = {
       name: "SGM — Gestão de Manifestações",
       period: "2021 – 2023",
       description:
-        "Sistema web para registro, acompanhamento e gestão de manifestações e processos de ouvidoria.",
+        "Sistema web da SSP-BA para o ciclo completo de manifestações de ouvidoria: cadastro, classificação/ciência, acompanhamento, histórico e relatórios — com papéis distintos por equipe.",
       story:
-        "O SGM nasceu no contexto institucional da SSP-BA para organizar o ciclo de manifestações cidadãs e demandas de ouvidoria: cadastro, consulta com filtros (período, natureza, canal, envolvido), acompanhamento de status/prazo e gestão do fluxo até a conclusão. Atuei no desenvolvimento e evolução frontend — login institucional, listagens e telas de controle — alinhando a interface às regras de negócio e aos processos administrativos internos.",
+        "O SGM é o fluxo operacional de ouvidoria da SSP-BA. A manifestação entra pelo cadastro em etapas (TAG, dados, envolvidos, detalhes da manifestação), passa por consulta com filtros (período, Nº SGM, status, Disque Denúncia etc.), classificação e ciência, e segue para acompanhamento e controle até conclusão — com histórico e relatórios. Atuei no frontend Nuxt 3 / Vue 3: login por matrícula, middleware de auth por perfil (atendente, coordenadores, ouvidor, admin), notificações, upload de arquivos e telas de consulta/acompanhamento alinhadas às regras internas.",
       challenge:
-        "Dar clareza a um fluxo administrativo com múltiplos status, prazos, papéis e histórico — sem perder usabilidade para equipes de atendimento e ouvidoria.",
+        "Orquestrar um ciclo com muitos status, prazos e papéis (atendimento → classificação → controle → ouvidoria) sem perder clareza nem vazar rotas entre perfis.",
       solution:
-        "Aplicação web em Vue integrada a APIs REST, com autenticação por matrícula, consulta avançada e painéis de acompanhamento e controle.",
+        "SPA em Nuxt 3 + Vue 3 + Vuetify 3, Pinia e TanStack Vue Query sobre API REST (JWT em cookie), com rotas e menu filtrados por role e geração de relatório (pdfmake).",
       impact:
-        "Centralizou o acompanhamento de ouvidoria e manifestações, reduzindo atrito operacional e aumentando a rastreabilidade dos processos.",
+        "Centralizou cadastro, acompanhamento e rastreabilidade das manifestações — menos atrito entre atendimento, controle e ouvidoria.",
       highlights: [
-        "Consulta e cadastro de manifestações",
-        "Acompanhamento com status e prazo",
-        "Stack Vue · login institucional SSP-BA",
+        "Ciclo: cadastro → consulta → classificar/ciência → acompanhamento → histórico",
+        "Papéis: atendente, coordenadores, ouvidor, admin e estatística",
+        "Consulta com filtros (Nº SGM, TAG, status, canal, período)",
+        "Nuxt 3 · Vue Query · Pinia · Vuetify 3",
       ],
-      tech: ["Vue", "JavaScript", "REST APIs"],
+      tech: [
+        "Nuxt 3",
+        "Vue 3",
+        "TypeScript",
+        "Vuetify 3",
+        "Pinia",
+        "TanStack Vue Query",
+        "Axios",
+        "pdfmake",
+        "Cypress",
+      ],
       confidential: false,
       featured: false,
       evidence: "strong",

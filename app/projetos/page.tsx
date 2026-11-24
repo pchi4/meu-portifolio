@@ -8,7 +8,7 @@ import { Footer } from "@/src/layout/Footer";
 export const metadata = {
   title: "Projetos | Douglas Lopes",
   description:
-    "Case hero MOP (7k+ usuários) e seleção — App190, SGM, Sentinela, Hydra, Edge Vision.",
+    "Case hero MOP (7k+ usuários) e seleção — App190, trio web SSP (SGM, Hydra, Sentinela) e Edge Vision.",
 };
 
 export default function ProjectsIndexPage() {
@@ -34,8 +34,9 @@ export default function ProjectsIndexPage() {
             Seleção com prova visual
           </h1>
           <p className="text-muted text-lg leading-relaxed">
-            MOP e App190 em destaque. Demais cases com transparência sobre o
-            nível de evidência — prints fortes vs. atuação institucional.
+            MOP e App190 em destaque. Trio web SSP — SGM (ouvidoria), Hydra
+            (escalas) e Sentinela (câmeras) — com transparência sobre o nível
+            de evidência visual.
           </p>
         </div>
 
