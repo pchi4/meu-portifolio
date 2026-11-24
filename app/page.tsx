@@ -16,21 +16,23 @@ import { Projects } from "@/src/components/Projects";
 export default function Portfolio() {
   useEffect(() => {
     const trackAccess = async () => {
-      const hasNotified = sessionStorage.getItem("notified_access");
+      if (sessionStorage.getItem("notified_access")) return;
 
-      if (!hasNotified) {
-        try {
-          await fetch("/api/notify", {
-            method: "POST",
-            body: JSON.stringify({
-              ua: navigator.userAgent,
-              origin: document.referrer || "Acesso Direto",
-            }),
-          });
+      try {
+        const res = await fetch("/api/notify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            ua: navigator.userAgent,
+            origin: document.referrer || "Acesso Direto",
+          }),
+        });
+        // Marca mesmo em 429 — o rate limit do servidor já cobriu este IP
+        if (res.ok || res.status === 429) {
           sessionStorage.setItem("notified_access", "true");
-        } catch (err) {
-          console.error("Erro no tracking", err);
         }
+      } catch {
+        // silencioso: tracking não deve afetar a UX
       }
     };
 
