@@ -8,11 +8,13 @@ export function DeviceMockup({
   alt = "App screenshot",
   className = "",
   priority = false,
+  quality = 85,
 }: {
   imageSrc: string;
   alt?: string;
   className?: string;
   priority?: boolean;
+  quality?: number;
 }) {
   const [hasError, setHasError] = useState(false);
 
@@ -38,7 +40,8 @@ export function DeviceMockup({
             alt={alt}
             fill
             priority={priority}
-            sizes="190px"
+            quality={quality}
+            sizes="(max-width: 768px) 40vw, 190px"
             className="object-cover object-top"
             onError={() => setHasError(true)}
           />
