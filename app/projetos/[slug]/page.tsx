@@ -13,7 +13,7 @@ import {
 import { getProjectBySlug, profile } from "@/src/data/profiles";
 import { NavBar } from "@/src/layout/Navbar";
 import { Footer } from "@/src/layout/Footer";
-import { DeviceMockup } from "@/src/components/DeviceMockup";
+import { ProjectGallery } from "@/src/components/ProjectGallery";
 
 const iconMap = {
   mobile: Smartphone,
@@ -156,93 +156,44 @@ export default async function ProjectPage({
           </aside>
         </div>
 
-        {portraitImages.length > 0 ? (
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10 py-8 mb-14 border border-border bg-surface/40">
-            {portraitImages.map((img, i) => (
-              <figure key={img.src} className="text-center">
-                <DeviceMockup
-                  imageSrc={img.src}
-                  alt={img.alt}
-                  priority={i === 0}
-                />
-                {img.caption && (
-                  <figcaption className="mt-4 max-w-[190px] mx-auto font-mono text-[11px] text-muted tracking-wide">
-                    {img.caption}
-                  </figcaption>
-                )}
-              </figure>
+        <ProjectGallery
+          portraitImages={portraitImages}
+          landscapeImages={landscapeImages}
+          cover={project.cover}
+          projectName={project.name}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            {[
+              { title: "Desafio", body: project.challenge },
+              { title: "Solução", body: project.solution },
+              { title: "Impacto", body: project.impact },
+            ].map((block) => (
+              <div key={block.title} className="border-t border-border pt-5">
+                <h2 className="font-mono text-[11px] tracking-widest text-accent uppercase mb-3">
+                  {block.title}
+                </h2>
+                <p className="text-muted leading-relaxed">{block.body}</p>
+              </div>
             ))}
           </div>
-        ) : (
-          <div className="relative aspect-[16/9] overflow-hidden border border-border mb-14 bg-surface">
-            <Image
-              src={project.cover}
-              alt={project.name}
-              fill
-              priority
-              className="object-cover"
-              sizes="(max-width: 1200px) 100vw, 1100px"
-            />
-          </div>
-        )}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {[
-            { title: "Desafio", body: project.challenge },
-            { title: "Solução", body: project.solution },
-            { title: "Impacto", body: project.impact },
-          ].map((block) => (
-            <div key={block.title} className="border-t border-border pt-5">
-              <h2 className="font-mono text-[11px] tracking-widest text-accent uppercase mb-3">
-                {block.title}
-              </h2>
-              <p className="text-muted leading-relaxed">{block.body}</p>
-            </div>
-          ))}
-        </div>
-
-        <section className="mb-16">
-          <h2 className="font-display text-2xl font-bold mb-5">A história</h2>
-          <p className="text-muted text-lg leading-relaxed max-w-3xl whitespace-pre-line">
-            {project.story}
-          </p>
-          {project.highlights.length > 0 && (
-            <ul className="mt-8 space-y-3 max-w-2xl">
-              {project.highlights.map((h) => (
-                <li key={h} className="flex gap-3 text-foreground/85">
-                  <span className="mt-2 h-px w-4 shrink-0 bg-accent" />
-                  <span>{h}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </section>
-
-        {landscapeImages.length > 0 && (
-          <section className="mb-20">
-            <h2 className="font-display text-2xl font-bold mb-6">Galeria</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {landscapeImages.map((img) => (
-                <figure key={img.src} className="border border-border">
-                  <div className="relative aspect-[16/10] bg-surface">
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
-                  </div>
-                  {img.caption && (
-                    <figcaption className="p-4 font-mono text-[11px] text-muted tracking-wide">
-                      {img.caption}
-                    </figcaption>
-                  )}
-                </figure>
-              ))}
-            </div>
+          <section className="mb-16">
+            <h2 className="font-display text-2xl font-bold mb-5">A história</h2>
+            <p className="text-muted text-lg leading-relaxed max-w-3xl whitespace-pre-line">
+              {project.story}
+            </p>
+            {project.highlights.length > 0 && (
+              <ul className="mt-8 space-y-3 max-w-2xl">
+                {project.highlights.map((h) => (
+                  <li key={h} className="flex gap-3 text-foreground/85">
+                    <span className="mt-2 h-px w-4 shrink-0 bg-accent" />
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </section>
-        )}
+        </ProjectGallery>
 
         {others.length > 0 && (
           <section className="section-rule pt-10">
